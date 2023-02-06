@@ -67,6 +67,10 @@ const signIn = asyncHandler(async (req, res) => {
     }
 })
 
+const getMe = asyncHandler(async (req, res) => {
+    return res.status(200).send(req.user)
+})
+
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.X_TOKEN, {
         expiresIn: '30d'
@@ -75,5 +79,6 @@ const generateToken = (id) => {
 
 export {
     signUp,
-    signIn
+    signIn,
+    getMe
 }
