@@ -1,6 +1,7 @@
-import asyncHandler from "express-async-handler"
-import { genSalt, hash } from "bcrypt";
-import User from "../models/userModel.js"
+import asyncHandler from "express-async-handler";
+import { genSalt, hash, compare } from "bcrypt";
+import jwt from "jsonwebtoken";
+import User from "../models/userModel.js";
 
 /**
 * @desc:    Yangi foydalanuvchini ro'yxatdan o'tkazish
@@ -34,7 +35,8 @@ const signUp = asyncHandler(async  (req, res) => {
         res.status(201).json({
             _id: user._id,
             name: user.name,
-            email: user.email
+            email: user.email,
+            token: generateToken(user._id)
         })
     } else {
         res.status(400);
@@ -48,8 +50,28 @@ const signUp = asyncHandler(async  (req, res) => {
  * @access:  Ommaviy
  **/
 const signIn = asyncHandler(async (req, res) => {
-    res.send('Login')
+    const { email, password } = req.body;
+
+    const user = await User.findOne({email});
+
+    if ( user && (await compare(password, user.password))) {
+        res.status(200).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            token: generateToken(user._id)
+        })
+    } else {
+        res.status(401)
+        throw new Error('Noto\'g\'ri ma\'lumotlar kiritildi')
+    }
 })
+
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.X_TOKEN, {
+        expiresIn: '30d'
+    })
+}
 
 export {
     signUp,
