@@ -2,9 +2,12 @@ import express from "express";
 import { config } from "dotenv";
 import userRoute from "./routes/userRoute.js";
 import {errorHandler} from "./middleware/errorMiddleware.js";
+import "colors"
+import connect from "./config/db.js"
 
-const app = express();
 config();
+connect();
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
