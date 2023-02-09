@@ -5,17 +5,17 @@ const Header = () => {
     return (
         <header className={'header'}>
             <div className={'logo'}>
-                <Link to={'/'}>Support Desk</Link>
+                <Link to={'/'}>Bosh sahifa</Link>
             </div>
             <ul>
                 <li>
                     <Link to={'/sign-in'}>
-                        <FaSignInAlt /> Login
+                        <FaSignInAlt /> Tizimga kirish
                     </Link>
                 </li>
                 <li>
                     <Link to={'/sign-up'}>
-                        <FaUser /> Sign Up
+                        <FaUser /> Ro'yxatdan o'tish
                     </Link>
                 </li>
             </ul>
