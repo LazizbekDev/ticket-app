@@ -1,4 +1,12 @@
 {
   "yordam": "What do u need help with?",
-  "variant": "Choose from an option below"
+  "variant": "Choose from an option below",
+  "login": "Login",
+  "signup": "Register",
+  "home_b1": "Create a new ticket",
+  "home_b2": "View my tickets",
+  "creat_acc": "Register",
+  "creat_acc_p": "Create a new account",
+  "login_acc": "Login",
+  "login_acc_p": "Enter to your account"
 }

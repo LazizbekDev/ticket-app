@@ -1,4 +1,12 @@
 {
   "yordam": "Sizga qanday yordam kerak?",
-  "variant": "quyidagi variantdan tanlang"
+  "variant": "quyidagi variantdan tanlang",
+  "login": "Tizimga kirish",
+  "signup": "Ro'yxatdan o'tish",
+  "home_b1": "Yangi chipta yaratish",
+  "home_b2": "Chiptalarimni ko'rish",
+  "creat_acc": "Hisob yaratish",
+  "creat_acc_p": "Yangi hisobingizni yarating",
+  "login_acc": "Kirish",
+  "login_acc_p": "Hisobingizga kiring"
 }

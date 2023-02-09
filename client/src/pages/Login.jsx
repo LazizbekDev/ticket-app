@@ -1,7 +1,10 @@
 import { FaSignInAlt, FaUser } from "react-icons/fa"
 import {toast} from "react-toastify";
+import {useTranslation} from "react-i18next";
 
 const Login = ({register}) => {
+
+    const { t } = useTranslation();
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -16,16 +19,17 @@ const Login = ({register}) => {
                 toast.error('Parol mos emas!')
             }
         }
+        console.log(name, email)
     }
 
     return (
         <>
             <section className={'heading'}>
-                <h1>{register ? "Hisob yaratish" : "Kirish"}</h1>
+                <h1>{register ? t('creat_acc') : t('login_acc')}</h1>
                 <p>{register ? (<span className={'flex-center'}>
-                    <FaUser /> Yangi hisobingizni yarating
+                    <FaUser /> {t('creat_acc_p')}
                 </span>) : (<span className={'flex-center'}>
-                    <FaSignInAlt /> Hisobingizga kiring
+                    <FaSignInAlt /> {t('login_acc_p')}
                 </span>)}</p>
             </section>
 
@@ -85,7 +89,7 @@ const Login = ({register}) => {
 
                     <div className={'form-group'}>
                         <button className={'btn btn-block'}>
-                            {register ? "Hisob yaratish" : "Kirish"}
+                            {register ? t('creat_acc') : t('login_acc')}
                         </button>
                     </div>
 
