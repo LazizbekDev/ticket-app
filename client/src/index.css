@@ -377,6 +377,16 @@ footer {
   animation: spin 1.2s linear infinite;
 }
 
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.d-none {
+  display: none !important;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
