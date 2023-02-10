@@ -41,7 +41,7 @@ const Login = ({register}) => {
                             name={'name'}
                             className={'form-control'}
                             id={'name'}
-                            placeholder={'Ismingizni kiriting'}
+                            placeholder={t('input.name')}
                             required
                             onInvalid={(e) => e.target.setCustomValidity("Ism kiritilishi shart")}
                             onInput={(e) => e.target.setCustomValidity("")}
@@ -54,7 +54,7 @@ const Login = ({register}) => {
                             name={'email'}
                             className={'form-control'}
                             id={'email'}
-                            placeholder={'emailingizni kiriting'}
+                            placeholder={t('input.email')}
                             required
                             onInvalid={(e) => e.target.setCustomValidity("Email kiritilishi shart")}
                             onInput={(e) => e.target.setCustomValidity("")}
@@ -67,7 +67,7 @@ const Login = ({register}) => {
                             name={'password'}
                             className={'form-control'}
                             id={'password'}
-                            placeholder={'Parol kiriting'}
+                            placeholder={t('input.password')}
                             required
                             onInvalid={(e) => e.target.setCustomValidity("Parol kiritilishi shart")}
                             onInput={(e) => e.target.setCustomValidity("")}
@@ -80,7 +80,7 @@ const Login = ({register}) => {
                             name={'confirmation'}
                             className={'form-control'}
                             id={'confirmation'}
-                            placeholder={'Parolni tasdiqlang'}
+                            placeholder={t('input.confirm')}
                             required
                             onInvalid={(e) => e.target.setCustomValidity("Parol tasdiqlanishi lozim")}
                             onInput={(e) => e.target.setCustomValidity("")}

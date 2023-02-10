@@ -8,5 +8,11 @@
   "creat_acc": "Hisob yaratish",
   "creat_acc_p": "Yangi hisobingizni yarating",
   "login_acc": "Kirish",
-  "login_acc_p": "Hisobingizga kiring"
+  "login_acc_p": "Hisobingizga kiring",
+  "input": {
+    "name": "Ismingizni kiriting",
+    "email": "emailingizni kiriting",
+    "password": "Parol kiriting",
+    "confirm": "Parolni tasdiqlang"
+  }
 }

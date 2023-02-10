@@ -8,5 +8,11 @@
   "creat_acc": "Register",
   "creat_acc_p": "Create a new account",
   "login_acc": "Login",
-  "login_acc_p": "Enter to your account"
+  "login_acc_p": "Enter to your account",
+  "input": {
+    "name": "Enter your name",
+    "email": "Enter your email",
+    "password": "Enter your password",
+    "confirm": "Confirm your password"
+  }
 }
