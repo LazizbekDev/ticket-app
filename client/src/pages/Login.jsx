@@ -1,14 +1,29 @@
 import { FaSignInAlt, FaUser } from "react-icons/fa"
 import {toast} from "react-toastify";
 import {useTranslation} from "react-i18next";
-import {signin, signup} from "../redux/auth/authSlice";
+import {reset, signin, signup} from "../redux/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {useEffect} from "react";
 
 const Login = ({register}) => {
 
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const {user, isLoading, isSuccess, isError, message} = useSelector((state) => state.auth)
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(message);
+        }
+
+        if (isSuccess || user) {
+            navigate('/');
+        }
+
+        dispatch(reset())
+    }, [user, isError, isLoading, isSuccess, message, dispatch])
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -49,7 +64,6 @@ const Login = ({register}) => {
                 </span>) : (<span className={'flex-center'}>
                     <FaSignInAlt /> {t('login_acc_p')}
                 </span>)}</p>
-                {user}
             </section>
 
             <section className={'form'}>
