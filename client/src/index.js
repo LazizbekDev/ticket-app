@@ -17,7 +17,7 @@ i18n
     .init({
         supportedLngs: ['uz', 'en'],
         fallbackLng: 'en',
-        debug: true,
+        // debug: true,
         detection: {
             order: ['cookie', 'htmlTag', 'localStorage', 'path', 'subdomain'],
             caches: ['cookie']

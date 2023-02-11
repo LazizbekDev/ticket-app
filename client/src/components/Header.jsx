@@ -8,7 +8,7 @@ import Select from 'react-select'
 
 const Header = () => {
     const { t } = useTranslation();
-    console.log(jsCookie.get('i18next'))
+
     const options = [
         {
             value: 'uz',
@@ -25,9 +25,8 @@ const Header = () => {
     const { label } = options.find(op => op.value === 'uz')
 
     const colourStyles = {
-        option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+        option: (styles, {isDisabled, isFocused}) => {
             // const color = chroma(data.color);
-            console.log({ data, isDisabled, isFocused, isSelected });
             return {
                 ...styles,
                 backgroundColor: isFocused ? "#000" : isDisabled && "#d0cccc",
