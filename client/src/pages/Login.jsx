@@ -1,10 +1,14 @@
 import { FaSignInAlt, FaUser } from "react-icons/fa"
 import {toast} from "react-toastify";
 import {useTranslation} from "react-i18next";
+import {signin, signup} from "../redux/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = ({register}) => {
 
     const { t } = useTranslation();
+    const dispatch = useDispatch();
+    const {user, isLoading, isSuccess, isError, message} = useSelector((state) => state.auth)
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -17,9 +21,23 @@ const Login = ({register}) => {
         if (register) {
             if (register && password !== confirmation) {
                 toast.error('Parol mos emas!')
+            } else {
+                const userData = {
+                    name,
+                    email,
+                    password
+                }
+
+                dispatch(signup(userData))
             }
+        } else {
+            const userData = {
+                email,
+                password
+            }
+            
+            dispatch(signin(userData))
         }
-        console.log(name, email)
     }
 
     return (
@@ -31,6 +49,7 @@ const Login = ({register}) => {
                 </span>) : (<span className={'flex-center'}>
                     <FaSignInAlt /> {t('login_acc_p')}
                 </span>)}</p>
+                {user}
             </section>
 
             <section className={'form'}>
