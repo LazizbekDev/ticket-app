@@ -14,5 +14,9 @@
     "email": "emailingizni kiriting",
     "password": "Parol kiriting",
     "confirm": "Parolni tasdiqlang"
+  },
+  "button": {
+    "logout": "Chiqish",
+    "profile": "Profil"
   }
 }

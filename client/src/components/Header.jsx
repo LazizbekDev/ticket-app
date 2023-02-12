@@ -47,12 +47,12 @@ const Header = () => {
     const userOption = [
         {
             value: '/profile',
-            label: "Profile",
+            label: t('button.profile'),
             disabled: '/profile' === pathname
         },
         {
             value: 'logout',
-            label: 'Logout',
+            label: t('button.logout'),
         }
     ]
 
