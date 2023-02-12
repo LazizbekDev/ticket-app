@@ -5,6 +5,7 @@ import {reset, signin, signup} from "../redux/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {useEffect} from "react";
+import Loader from "../components/Loader";
 
 const Login = ({register}) => {
 
@@ -55,6 +56,10 @@ const Login = ({register}) => {
         }
     }
 
+    // if (!isLoading) {
+    //     return <Loader />
+    // }
+
     return (
         <>
             <section className={'heading'}>
@@ -93,6 +98,8 @@ const Login = ({register}) => {
                             onInput={(e) => e.target.setCustomValidity("")}
                         />
                     </div>
+
+                    {isLoading && <Loader />}
 
                     <div className={`form-group`}>
                         <input
