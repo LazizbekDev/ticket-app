@@ -67,8 +67,18 @@ const signIn = asyncHandler(async (req, res) => {
     }
 })
 
+/**
+ * @desc:    Foydalanuchi profileni olish
+ * @route:   /api/users/me
+ * @access:  Shaxsiy
+ **/
 const getMe = asyncHandler(async (req, res) => {
-    return res.status(200).send(req.user)
+    const user = {
+        id: req.user._id,
+        email: req.user.email,
+        name: req.user.name
+    }
+    return res.status(200).send(user)
 })
 
 const generateToken = (id) => {

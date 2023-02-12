@@ -1,6 +1,7 @@
 import express from "express";
 import { config } from "dotenv";
 import userRoute from "./routes/userRoute.js";
+import ticketRoute from "./routes/ticketRoute.js";
 import {errorHandler} from "./middleware/errorMiddleware.js";
 import "colors"
 import connect from "./config/db.js"
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/users', userRoute)
+app.use('/api/tickets', ticketRoute)
 
 app.use(errorHandler)
 
