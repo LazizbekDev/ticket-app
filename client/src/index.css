@@ -377,6 +377,18 @@ footer {
   animation: spin 1.2s linear infinite;
 }
 
+.loading {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(2, 2, 2, 0.75);
+}
+
+.loading img {
+  pointer-events: none;
+}
+
 .flex-center {
   display: flex;
   align-items: center;

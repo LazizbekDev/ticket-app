@@ -1,13 +1,19 @@
-import { FaUser, FaSignInAlt } from "react-icons/fa";
-import { IoLanguage } from "react-icons/io5"
-import { Link } from "react-router-dom";
+import {FaUser, FaSignInAlt} from "react-icons/fa";
+import {IoLanguage} from "react-icons/io5"
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import i18next from "i18next";
 import jsCookie from "js-cookie";
 import Select from 'react-select'
+import {useDispatch, useSelector} from "react-redux";
+import {logout, reset} from "../redux/auth/authSlice";
 
 const Header = () => {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
+    const navigate = useNavigate();
+    const {pathname} = useLocation();
+    const {user} = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
 
     const options = [
         {
@@ -21,8 +27,38 @@ const Header = () => {
             disabled: 'en' === jsCookie.get('i18next')
         }
     ]
+    const {label} = options.find(op => op.value === 'uz')
 
-    const { label } = options.find(op => op.value === 'uz')
+    const loginOptions = [
+        {
+            value: '/sign-in',
+            label: t('login'),
+            disabled: '/sign-in' === pathname
+        },
+        {
+            value: '/sign-up',
+            label: t('signup'),
+            disabled: '/sign-up' === pathname
+        }
+    ]
+
+    const userOption = [
+        {
+            value: '/profile',
+            label: "Profile",
+            disabled: '/profile' === pathname
+        },
+        {
+            value: 'logout',
+            label: 'Logout',
+        }
+    ]
+
+    const onLogout = () => {
+        dispatch(logout())
+        dispatch(reset())
+        navigate('/')
+    }
 
     const colourStyles = {
         option: (styles, {isDisabled, isFocused}) => {
@@ -42,23 +78,34 @@ const Header = () => {
             </div>
             <ul>
                 <li>
-                    <Link to={'/sign-in'}>
-                        <FaSignInAlt /> {t('login')}
-                    </Link>
-                </li>
-                <li>
-                    <Link to={'/sign-up'}>
-                        <FaUser /> {t('signup')}
-                    </Link>
+                    {user ?
+                        <Select
+                            isSearchable={false}
+                            placeholder={<span style={{marginBottom: 0}}><FaUser /> {user.name}</span>}
+                            isOptionDisabled={(opt) => opt.disabled}
+                            options={userOption}
+                            styles={colourStyles}
+                            onChange={(e) => e.value === '/profile' ? navigate(e.value) : onLogout()}
+                        /> : (
+                        <Select
+                            isSearchable={false}
+                            placeholder={<span className={'flex-center'}>
+                            <FaSignInAlt size={'1rem'}/> {t('login')}
+                        </span>}
+                            isOptionDisabled={(opt) => opt.disabled}
+                            options={loginOptions}
+                            styles={colourStyles}
+                            onChange={(e) => navigate(e.value)}
+                        />
+                    )}
                 </li>
                 <li>
 
                     <Select
                         isSearchable={false}
                         placeholder={<span className={'flex-center'}>
-                            <IoLanguage size={'1rem'} /> {"  " + label}
+                            <IoLanguage size={'1rem'}/> {"  " + label}
                         </span>}
-                        defaultValue={jsCookie.get('i18next')}
                         isOptionDisabled={(opt) => opt.disabled}
                         options={options}
                         styles={colourStyles}
