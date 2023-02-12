@@ -24,7 +24,7 @@ const Login = ({register}) => {
         }
 
         dispatch(reset())
-    }, [user, isError, isLoading, isSuccess, message, dispatch])
+    }, [user, isError, isLoading, isSuccess, message, dispatch, navigate])
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -55,10 +55,6 @@ const Login = ({register}) => {
             dispatch(signin(userData))
         }
     }
-
-    // if (!isLoading) {
-    //     return <Loader />
-    // }
 
     return (
         <>

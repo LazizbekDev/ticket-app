@@ -399,6 +399,11 @@ footer {
   display: none !important;
 }
 
+.Dropdown-control {
+  padding: 2px 20px !important;
+  border-radius: 5px !important;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

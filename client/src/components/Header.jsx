@@ -6,6 +6,8 @@ import i18next from "i18next";
 import jsCookie from "js-cookie";
 import Select from 'react-select'
 import {useDispatch, useSelector} from "react-redux";
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 import {logout, reset} from "../redux/auth/authSlice";
 
 const Header = () => {
@@ -79,8 +81,7 @@ const Header = () => {
             <ul>
                 <li>
                     {user ?
-                        <Select
-                            isSearchable={false}
+                        <Dropdown
                             placeholder={<span style={{marginBottom: 0}}><FaUser /> {user.name}</span>}
                             isOptionDisabled={(opt) => opt.disabled}
                             options={userOption}
