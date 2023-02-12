@@ -9,6 +9,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
 import { Provider } from "react-redux";
 import {store} from "./store";
+import Loader from "./components/Loader";
 
 i18n
     .use(initReactI18next) // passes i18n down to react-i18next
@@ -24,15 +25,12 @@ i18n
         },
         backend: {
             loadPath: "/languages/{{lng}}/translation.json"
-        },
-        react: {
-            useSuspense: false
         }
     });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Suspense fallback={'Loading'}>
+  <Suspense fallback={<Loader main={true} />}>
       <Provider store={store()}>
           <React.StrictMode>
               <App />
