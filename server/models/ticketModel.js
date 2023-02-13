@@ -5,7 +5,7 @@ const ticketSchema = new Schema({
         type: Schema.Types.ObjectId,
         required: true
     },
-    products: {
+    product: {
         type: String,
         required: [true, 'Iltimos mahsulotni tanlang'],
         enum: ['IT', 'movies', 'games', 'fast food']

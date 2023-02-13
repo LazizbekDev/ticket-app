@@ -8,14 +8,14 @@ import Ticket from "../models/ticketModel.js"
  * @access:  Shaxsiy
  **/
 const getTickets = asyncHandler(async (req, res) => {
-    const user = await User.findOne(req.user.id)
+    const user = await User.findOne(req.user._id)
 
     if (!user) {
         res.status(401)
         throw new Error('Foydalanuvchi topilmadi!')
     }
 
-    const tickets = await Ticket.find({ user: req.user.id})
+    const tickets = await Ticket.find({ user: req.user._id})
     return res.status(200).json(tickets)
 })
 
@@ -32,7 +32,7 @@ const createTicket = asyncHandler(async (req, res) => {
         throw new Error('Mahsulot va tavsifni kiriting!')
     }
 
-    const user = await User.findOne(req.user.id)
+    const user = await User.findOne(req.user._id)
 
     if (!user) {
         res.status(401)
@@ -43,7 +43,7 @@ const createTicket = asyncHandler(async (req, res) => {
         product,
         description,
         user: req.user.id,
-        status: "new"
+        status: "yangi"
     })
 
     return res.status(201).send(ticket)
