@@ -19,6 +19,99 @@ const getTickets = asyncHandler(async (req, res) => {
     return res.status(200).json(tickets)
 })
 
+
+/**
+ * @desc:    Foydalanuchi chiptalasini olish
+ * @route:   GET /api/tickets/:id
+ * @access:  Shaxsiy
+ **/
+const getTicket = asyncHandler(async (req, res) => {
+    const user = await User.findOne(req.user._id)
+
+    if (!user) {
+        res.status(401)
+        throw new Error('Foydalanuvchi topilmadi!')
+    }
+
+    const ticket = await Ticket.findById(req.params.id)
+
+    if (!ticket) {
+        res.status(404)
+        throw new Error('Chipta topilmadi');
+    }
+
+    if (ticket.user.toString() !== req.user.id) {
+        res.status(401)
+        throw new Error('Ruxsat etilmagan');
+    }
+
+    return res.status(200).json(ticket)
+})
+
+/**
+ * @desc:    Foydalanuchi chiptalasini o'chirish
+ * @route:   DELETE /api/tickets/:id
+ * @access:  Shaxsiy
+ **/
+const deleteTicket = asyncHandler(async (req, res) => {
+    const user = await User.findOne(req.user._id)
+
+    if (!user) {
+        res.status(401)
+        throw new Error('Foydalanuvchi topilmadi!')
+    }
+
+    const ticket = await Ticket.findById(req.params.id)
+
+    if (!ticket) {
+        res.status(404)
+        throw new Error('Chipta topilmadi');
+    }
+
+    if (ticket.user.toString() !== req.user.id) {
+        res.status(401)
+        throw new Error('Ruxsat etilmagan');
+    }
+
+    await ticket.remove()
+
+    return res.status(200).json({success: true})
+})
+
+/**
+ * @desc:    Foydalanuchi chiptalasini yangilash
+ * @route:   PUT /api/tickets/:id
+ * @access:  Shaxsiy
+ **/
+const updateTicket = asyncHandler(async (req, res) => {
+    const user = await User.findOne(req.user._id)
+
+    if (!user) {
+        res.status(401)
+        throw new Error('Foydalanuvchi topilmadi!')
+    }
+
+    const ticket = await Ticket.findById(req.params.id)
+
+    if (!ticket) {
+        res.status(404)
+        throw new Error('Chipta topilmadi');
+    }
+
+    if (ticket.user.toString() !== req.user.id) {
+        res.status(401)
+        throw new Error('Ruxsat etilmagan');
+    }
+
+    const updatedTicket = await Ticket.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {new: true}
+    )
+
+    return res.status(200).json(updatedTicket)
+})
+
 /**
  * @desc:    Foydalanuchi chiptalarini olish
  * @route:   POST /api/tickets
@@ -51,5 +144,8 @@ const createTicket = asyncHandler(async (req, res) => {
 
 export {
     getTickets,
-    createTicket
+    getTicket,
+    createTicket,
+    deleteTicket,
+    updateTicket
 }
