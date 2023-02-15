@@ -5,6 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Header from "./components/Header";
+import NewTicket from "./pages/NewTicket";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -16,6 +18,9 @@ function App() {
                     <Route path={'/'} element={<Home />}/>
                     <Route path={'/sign-in'} element={<Login />}/>
                     <Route path={'/sign-up'} element={<Login register={true} />}/>
+                    <Route path={'/yangi-chipta'} element={<PrivateRoute />}>
+                        <Route path={'/yangi-chipta'} element={<NewTicket />}/>
+                    </Route>
                 </Routes>
             </div>
         </BrowserRouter>
