@@ -17,6 +17,15 @@
   },
   "button": {
     "logout": "Chiqish",
-    "profile": "Profil"
+    "profile": "Profil",
+    "submit": "Yuborish"
+  },
+  "new_ticket": {
+    "h1": "Yangi chipta yaratish",
+    "p": "quyidagi maydonlarni to'ldiring",
+    "name": "Xaridor nomi",
+    "email": "Mijoz elektron pochtasi",
+    "product": "Mahsulot",
+    "description": "tavsif"
   }
 }

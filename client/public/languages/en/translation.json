@@ -17,6 +17,15 @@
   },
   "button": {
     "logout": "Logout",
-    "profile": "Profile"
+    "profile": "Profile",
+    "submit": "Submit"
+  },
+  "new_ticket": {
+    "h1": "Create new ticket",
+    "p": "Please fill out form below",
+    "name": "Costumer name",
+    "email": "Costumer email",
+    "product": "Product",
+    "description": "Description"
   }
 }
