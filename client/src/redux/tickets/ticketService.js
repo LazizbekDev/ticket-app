@@ -1,7 +1,7 @@
 import axios from "axios";
 import {toast} from "react-toastify";
 
-const API_URL = 'api/tickests'
+const API_URL = 'api/tickets'
 const create = async (ticketData, token) => {
     const response = await axios.post(API_URL, ticketData, {
         headers: {
