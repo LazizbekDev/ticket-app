@@ -1,8 +1,12 @@
-import { useState } from 'react';
-import { useSelector } from "react-redux";
+import {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
 import Dropdown from "react-dropdown";
 import 'react-dropdown/style.css';
+import {useNavigate} from "react-router-dom";
+import {createTicket, reset} from "../redux/tickets/ticketSlice";
+import {toast} from "react-toastify";
+import Loader from "../components/Loader";
 
 const NewTicket = () => {
     const { t } = useTranslation();
@@ -11,9 +15,33 @@ const NewTicket = () => {
     const [email] = useState(user.email)
     const [product, setProduct] = useState('games');
     const [description, setDescription] = useState('');
+    const {
+        isSuccess,
+        isError,
+        isLoading,
+        message
+    } = useSelector((state) => state.ticket);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(message)
+        }
+
+        if (isSuccess) {
+            dispatch(reset());
+            navigate('/');
+        }
+
+        dispatch(reset());
+
+    }, [dispatch, isSuccess, isError, navigate, message])
 
     const onSubmit = (e) => {
         e.preventDefault();
+        dispatch(createTicket({product, description}))
+        console.log(product, description)
     }
 
     const userOption = [
@@ -77,6 +105,8 @@ const NewTicket = () => {
                         />
                     </div>
 
+                    {isLoading && <Loader />}
+
                     <div className={'form-group'}>
                         <label htmlFor={'description'}>{t('new_ticket.description')}</label>
                         <textarea
@@ -87,7 +117,7 @@ const NewTicket = () => {
                     </div>
 
                     <div className={'form-group'}>
-                        <buttun className={'btn btn-block'}>{t('button.submit')}</buttun>
+                        <button type={'submit'} className={'btn btn-block'}>{t('button.submit')}</button>
                     </div>
 
                 </form>
