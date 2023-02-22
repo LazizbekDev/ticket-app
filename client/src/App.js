@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Header from "./components/Header";
 import NewTicket from "./pages/NewTicket";
 import PrivateRoute from "./components/PrivateRoute";
+import Tickets from "./pages/Tickets";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
                     <Route path={'/sign-up'} element={<Login register={true} />}/>
                     <Route path={'/yangi-chipta'} element={<PrivateRoute />}>
                         <Route path={'/yangi-chipta'} element={<NewTicket />}/>
+                    </Route>
+                    <Route path={'/chiptalarim'} element={<PrivateRoute />}>
+                        <Route path={'/chiptalarim'} element={<Tickets />}/>
                     </Route>
                 </Routes>
             </div>
