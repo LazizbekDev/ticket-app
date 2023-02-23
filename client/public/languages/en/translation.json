@@ -18,7 +18,8 @@
   "button": {
     "logout": "Logout",
     "profile": "Profile",
-    "submit": "Submit"
+    "submit": "Submit",
+    "view":  "View"
   },
   "new_ticket": {
     "h1": "Create new ticket",
@@ -26,6 +27,17 @@
     "name": "Costumer name",
     "email": "Costumer email",
     "product": "Product",
-    "description": "Description"
+    "status": "Status",
+    "description": "Description",
+    "date": "Date"
+  },
+  "status": {
+    "new": "new",
+    "open": "open",
+    "closed": "closed",
+    "progress": "In progress",
+    "ready": "ready",
+    "waiting": "waiting",
+    "complete": "complete"
   }
 }
