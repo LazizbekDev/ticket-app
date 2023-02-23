@@ -31,7 +31,7 @@ const NewTicket = () => {
 
         if (isSuccess) {
             dispatch(reset());
-            navigate('/');
+            navigate('/chiptalarim');
         }
 
         dispatch(reset());
