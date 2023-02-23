@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import NewTicket from "./pages/NewTicket";
 import PrivateRoute from "./components/PrivateRoute";
 import Tickets from "./pages/Tickets";
+import Ticket from "./pages/Ticket";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
                     </Route>
                     <Route path={'/chiptalarim'} element={<PrivateRoute />}>
                         <Route path={'/chiptalarim'} element={<Tickets />}/>
+                    </Route>
+                    <Route path={'/chipta/:id'} element={<PrivateRoute />}>
+                        <Route path={'/chipta/:id'} element={<Ticket />}/>
                     </Route>
                 </Routes>
             </div>
