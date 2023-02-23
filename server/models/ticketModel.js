@@ -3,7 +3,8 @@ import { Schema, model } from "mongoose";
 const ticketSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: "User"
     },
     product: {
         type: String,

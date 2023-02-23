@@ -7,8 +7,11 @@ import {
     getTickets,
     updateTicket
 } from "../controllers/ticketControl.js";
+import noteRoutes from "./noteRoutes.js";
 
 const router = Router();
+
+router.use('/:id/notes', noteRoutes)
 
 router
     .route('/')
