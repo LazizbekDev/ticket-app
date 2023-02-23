@@ -136,7 +136,7 @@ const createTicket = asyncHandler(async (req, res) => {
         product,
         description,
         user: req.user.id,
-        status: "yangi"
+        status: "new"
     })
 
     return res.status(201).send(ticket)

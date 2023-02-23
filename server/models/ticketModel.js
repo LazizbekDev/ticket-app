@@ -17,8 +17,16 @@ const ticketSchema = new Schema({
     status: {
         type: String,
         required: true,
-        enum: ['yangi', 'davom etmoqda', 'yopilgan'],
-        default: 'yangi'
+        enum: [
+            'new',
+            'open',
+            'closed',
+            'progress',
+            'ready',
+            'waiting',
+            'complete'
+        ],
+        default: 'new'
     }
 }, {
     timestamps: true
