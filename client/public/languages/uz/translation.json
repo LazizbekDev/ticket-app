@@ -39,5 +39,11 @@
     "ready": "Tayyor",
     "waiting": "Kutilmoqda",
     "complete": "Tugallangan"
+  },
+  "msg": {
+    "issue": "Masalaning tavsifi",
+    "error": "Nimadir noto'g'ri bo'ldi",
+    "date": "Topshirilgan sana",
+    "ticket_id": "Chipta indefekatori"
   }
 }

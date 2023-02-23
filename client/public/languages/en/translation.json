@@ -39,5 +39,11 @@
     "ready": "ready",
     "waiting": "waiting",
     "complete": "complete"
+  },
+  "msg": {
+    "issue": "Description of issue",
+    "error": "Something went wrong",
+    "date": "Date submitted",
+    "ticket_id": "Ticket id"
   }
 }

@@ -21,7 +21,7 @@ const Ticket = () => {
     }, [dispatch, isError, message, id])
 
     if (isError) {
-        return <h3>Nimadir noto'g'ri bo'ldi</h3>
+        return <h3>{t('msg.error')}</h3>
     }
 
     if (isLoading) {
@@ -32,19 +32,19 @@ const Ticket = () => {
         <div className={'ticket-page'}>
             <div className={'ticket-header'}>
                 <h2>
-                    Chipta indefekatori: {ticket._id}
+                    {t('msg.ticket_id')}: {ticket._id}
 
                     <span className={`status status-${ticket.status}`}>{t(`status.${ticket.status}`)}</span>
                 </h2>
 
                 <h3>
-                    Topshirilgan sana: {new Date(ticket.createdAt).toLocaleString('en-US')}
+                    {t('msg.date')} {new Date(ticket.createdAt).toLocaleString('en-US')}
                 </h3>
 
                 <hr />
 
                 <div className={'ticket-desc'}>
-                    <h3>Masalaning tavsifi</h3>
+                    <h3>{t('msg.issue')}</h3>
                     <p>{ticket.description}</p>
                 </div>
             </div>
