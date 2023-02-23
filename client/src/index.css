@@ -333,7 +333,7 @@ h3 {
   transform: scale(0.98);
 }
 
-p.status-in-progress {
+p.status-progress {
   color: orangered;
 }
 
