@@ -18,7 +18,8 @@
   "button": {
     "logout": "Chiqish",
     "profile": "Profil",
-    "submit": "Yuborish"
+    "submit": "Yuborish",
+    "view":  "Ko'rish"
   },
   "new_ticket": {
     "h1": "Yangi chipta yaratish",
@@ -26,6 +27,17 @@
     "name": "Xaridor nomi",
     "email": "Mijoz elektron pochtasi",
     "product": "Mahsulot",
-    "description": "tavsif"
+    "description": "tavsif",
+    "status": "Holati",
+    "date": "Sana"
+  },
+  "status": {
+    "new": "Yangi",
+    "open": "Ochilgan",
+    "closed": "Yopilgan",
+    "progress": "Jarayonda",
+    "ready": "Tayyor",
+    "waiting": "Kutilmoqda",
+    "complete": "Tugallangan"
   }
 }
