@@ -5,9 +5,11 @@ import {useParams} from "react-router-dom";
 import {toast} from "react-toastify";
 import Loader from "../components/Loader";
 import {useTranslation} from "react-i18next";
+import {getNotes} from "../redux/notes/noteSlice";
 
 const Ticket = () => {
     const { ticket, isLoading, isError, message } = useSelector((state) => state.ticket)
+    const { notes } = useSelector((state) => state.notes)
     const dispatch = useDispatch();
     const { id } = useParams();
     const { t } = useTranslation();
@@ -18,6 +20,7 @@ const Ticket = () => {
         }
 
         dispatch(getTicket(id))
+        dispatch(getNotes(id))
     }, [dispatch, isError, message, id])
 
     if (isError) {
