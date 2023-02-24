@@ -1,5 +1,6 @@
 import {FaUser, FaSignInAlt} from "react-icons/fa";
 import {IoLanguage} from "react-icons/io5"
+import { HiOutlineLogout } from "react-icons/hi";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import i18next from "i18next";
@@ -47,12 +48,24 @@ const Header = () => {
     const userOption = [
         {
             value: '/profile',
-            label: t('button.profile'),
+            label: (
+                <span
+                    className={'flex-center'}
+                    style={{marginBottom: 0}}>
+                    <FaUser /> {user.name}
+                </span>
+            ),
             disabled: '/profile' === pathname
         },
         {
             value: 'logout',
-            label: t('button.logout'),
+            label: (
+                <span
+                    style={{marginBottom: 0}}
+                    className={'flex-center'}>
+                    <HiOutlineLogout /> {t('button.logout')}
+                </span>
+            ),
         }
     ]
 
