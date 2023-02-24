@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {getTicket} from "../redux/tickets/ticketSlice";
-import {useParams} from "react-router-dom";
+import {closeTicket, getTicket} from "../redux/tickets/ticketSlice";
+import {useNavigate, useParams} from "react-router-dom";
 import {toast} from "react-toastify";
 import Loader from "../components/Loader";
 import {useTranslation} from "react-i18next";
@@ -14,6 +14,7 @@ const Ticket = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if ( isError ) {
@@ -30,6 +31,12 @@ const Ticket = () => {
 
     if (isLoading || noteLoad) {
         return <Loader main={true} />
+    }
+
+    const onClose = () => {
+        dispatch(closeTicket(id));
+        toast.dark('Ticket closed')
+        navigate('/chiptalarim')
     }
 
     return (
@@ -60,7 +67,7 @@ const Ticket = () => {
             ))}
 
             {ticket.status !== 'closed' && (
-                <button className={'btn btn-danger btn-block'}>Close track</button>
+                <button onClick={onClose} className={'btn btn-danger btn-block'}>Close track</button>
             )}
         </div>
     );
