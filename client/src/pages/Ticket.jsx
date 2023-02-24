@@ -5,7 +5,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {toast} from "react-toastify";
 import Loader from "../components/Loader";
 import {useTranslation} from "react-i18next";
-import {getNotes} from "../redux/notes/noteSlice";
+import {createNotes, getNotes} from "../redux/notes/noteSlice";
 import NoteItem from "../components/NoteItem";
 import Modal from "react-modal"
 import {IoMdClose} from "react-icons/io";
@@ -51,7 +51,8 @@ const Ticket = () => {
         e.preventDefault();
         const formDate = new FormData(e.currentTarget);
         const note = formDate.get('noteText');
-        console.log(note)
+        // console.log(notes)
+        dispatch(createNotes({note, id}))
         closeModal();
     }
 

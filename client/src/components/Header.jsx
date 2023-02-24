@@ -52,7 +52,7 @@ const Header = () => {
                 <span
                     className={'flex-center'}
                     style={{marginBottom: 0}}>
-                    <FaUser /> {user.name}
+                    <FaUser /> {user?.name}
                 </span>
             ),
             disabled: '/profile' === pathname
