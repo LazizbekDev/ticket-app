@@ -6,10 +6,11 @@ import {toast} from "react-toastify";
 import Loader from "../components/Loader";
 import {useTranslation} from "react-i18next";
 import {getNotes} from "../redux/notes/noteSlice";
+import NoteItem from "../components/NoteItem";
 
 const Ticket = () => {
     const { ticket, isLoading, isError, message } = useSelector((state) => state.ticket)
-    const { notes } = useSelector((state) => state.notes)
+    const { notes, isLoading: noteLoad } = useSelector((state) => state.notes)
     const dispatch = useDispatch();
     const { id } = useParams();
     const { t } = useTranslation();
@@ -27,13 +28,13 @@ const Ticket = () => {
         return <h3>{t('msg.error')}</h3>
     }
 
-    if (isLoading) {
+    if (isLoading || noteLoad) {
         return <Loader main={true} />
     }
 
     return (
         <div className={'ticket-page'}>
-            <div className={'ticket-header'}>
+            <header className={'ticket-header'}>
                 <h2>
                     {t('msg.ticket_id')}: {ticket._id}
 
@@ -50,7 +51,17 @@ const Ticket = () => {
                     <h3>{t('msg.issue')}</h3>
                     <p>{ticket.description}</p>
                 </div>
-            </div>
+
+                <h2>Notes: </h2>
+            </header>
+
+            {notes.map((note, index) => (
+                <NoteItem note={note} key={index} />
+            ))}
+
+            {ticket.status !== 'closed' && (
+                <button className={'btn btn-danger btn-block'}>Close track</button>
+            )}
         </div>
     );
 };
