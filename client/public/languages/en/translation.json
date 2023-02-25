@@ -9,6 +9,7 @@
   "creat_acc_p": "Create a new account",
   "login_acc": "Login",
   "login_acc_p": "Enter to your account",
+  "notes": "Notes",
   "input": {
     "name": "Enter your name",
     "email": "Enter your email",
@@ -19,7 +20,9 @@
     "logout": "Logout",
     "profile": "Profile",
     "submit": "Submit",
-    "view":  "View"
+    "view":  "View",
+    "close": "Close track",
+    "add": "Add notes"
   },
   "new_ticket": {
     "h1": "Create new ticket",
@@ -44,6 +47,7 @@
     "issue": "Description of issue",
     "error": "Something went wrong",
     "date": "Date submitted",
-    "ticket_id": "Ticket id"
+    "ticket_id": "Ticket id",
+    "noteBy": "Note from {{name}}"
   }
 }

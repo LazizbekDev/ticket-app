@@ -76,11 +76,11 @@ const Ticket = () => {
                     <p>{ticket.description}</p>
                 </div>
 
-                <h2>Notes: </h2>
+                <h2>{t('notes')}: </h2>
             </header>
 
             {ticket.status !== 'closed' && (
-                <button onClick={openModal} className={'btn'}>Add notes</button>
+                <button onClick={openModal} className={'btn'}>{t('button.add')}</button>
             )}
 
              <Modal
@@ -88,7 +88,7 @@ const Ticket = () => {
                  onRequestClose={closeModal}
                  contentLable={"Add note"}
                  isOpen={isOpen}>
-                 <h2>Add Note</h2>
+                 <h2>{t('button.add')}</h2>
                  <button className={'btn btn-close'} onClick={closeModal}><IoMdClose /></button>
 
                  <form onSubmit={submitNote}>
@@ -102,7 +102,7 @@ const Ticket = () => {
                      </div>
 
                      <div className={'form-group'}>
-                         <button className={'btn'} type={'submit'}>Submit</button>
+                         <button className={'btn'} type={'submit'}>{t('button.submit')}</button>
                      </div>
                  </form>
              </Modal>
@@ -112,7 +112,7 @@ const Ticket = () => {
             ))}
 
             {ticket.status !== 'closed' && (
-                <button onClick={onClose} className={'btn btn-danger btn-block'}>Close track</button>
+                <button onClick={onClose} className={'btn btn-danger btn-block'}>{t('button.close')}</button>
             )}
         </div>
     );

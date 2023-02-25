@@ -1,14 +1,15 @@
 {
   "yordam": "Sizga qanday yordam kerak?",
   "variant": "quyidagi variantdan tanlang",
-  "login": "Tizimga kirish",
-  "signup": "Ro'yxatdan o'tish",
+  "login": "kirish",
+  "signup": "Hisob yaratish",
   "home_b1": "Yangi chipta yaratish",
   "home_b2": "Chiptalarimni ko'rish",
   "creat_acc": "Hisob yaratish",
   "creat_acc_p": "Yangi hisobingizni yarating",
   "login_acc": "Kirish",
   "login_acc_p": "Hisobingizga kiring",
+  "notes": "Eslatmalar",
   "input": {
     "name": "Ismingizni kiriting",
     "email": "emailingizni kiriting",
@@ -19,7 +20,9 @@
     "logout": "Chiqish",
     "profile": "Profil",
     "submit": "Yuborish",
-    "view":  "Ko'rish"
+    "view":  "Ko'rish",
+    "close": "Trekni yopish",
+    "add": "Eslata qo'shish"
   },
   "new_ticket": {
     "h1": "Yangi chipta yaratish",
@@ -44,6 +47,7 @@
     "issue": "Masalaning tavsifi",
     "error": "Nimadir noto'g'ri bo'ldi",
     "date": "Topshirilgan sana",
-    "ticket_id": "Chipta indefekatori"
+    "ticket_id": "Chipta indefekatori",
+    "noteBy": "{{name}} dan eslatma"
   }
 }
